@@ -18,8 +18,6 @@ Process:
 3. Analyze the top matches against the resume.
 4. Select the top 3 best fits.
 5. Generate a detailed analysis for each.
-   - Ensure you include specific `strengths` that align with the job.
-   - Extract the `job_url` from the job metadata (it might be in the 'source' field).
 """
 
 def get_agent():
