@@ -63,12 +63,8 @@ async def find_jobs(resume: UploadFile = File(...)):
 
                 # 3. Final Answer (AI Message with structured output)
                 elif latest_message.type == "ai" and latest_message.content:
-                    # In some cases, the content might be the JSON string if ProviderStrategy didn't intercept it yet,
-                    # or it might be empty if the result is in a different key.
-                    # For this demo, let's try to yield the content if it looks like JSON.
                     content = latest_message.content
-                    if content.strip().startswith("{") or content.strip().startswith("["):
-                         yield f"data: {json.dumps({'type': 'result', 'content': content})}\n\n"
+                    yield f"data: {json.dumps({'type': 'result', 'content': content})}\n\n"
         
         # End of stream
         yield f"data: {json.dumps({'type': 'done'})}\n\n"

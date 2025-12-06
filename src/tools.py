@@ -1,3 +1,5 @@
+import asyncio
+from dotenv import load_dotenv
 from typing import List, Dict
 from langchain_core.tools import tool
 from langchain_openai import OpenAIEmbeddings
@@ -31,3 +33,18 @@ async def search_jobs(query: str, top_k: int = 5) -> List[Dict]:
         jobs.append(job_info)
         
     return jobs
+
+if __name__ == "__main__":
+    load_dotenv()
+    
+    async def test_search():
+        print("🔍 Testing search_jobs tool (top_k=3)...")
+        results = await search_jobs.ainvoke({"query": "Software Engineer in Seattle", "top_k": 3})
+        
+        print(f"✅ Found {len(results)} matches!")
+        for i, job in enumerate(results):
+            print(f"\n--- Result {i+1} ---")
+            print(f"URL: {job.get('source', 'Unknown')}")
+            print(f"Title: {job.get('title', 'N/A')}")
+
+    asyncio.run(test_search())
