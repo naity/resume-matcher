@@ -3,9 +3,9 @@ import requests
 import json
 import sseclient
 
-st.set_page_config(page_title="Agentic Resume Matcher", page_icon="💼")
+st.set_page_config(page_title="Agentic Resume Matcher", page_icon=":page_facing_up:")
 
-st.title("💼 Agentic Resume Matcher")
+st.title(":page_facing_up: Agentic Resume Matcher")
 st.markdown("Upload your resume and let our **AI Career Coach** find the best jobs for you.")
 
 # Resume Input

@@ -1,7 +1,28 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "resume-matcher"
 version = "0.1.0"
-description = "Add your description here"
+description = "Agentic Resume Matcher powered by LangChain and GPT"
 readme = "README.md"
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "fastapi",
+    "uvicorn",
+    "langchain",
+    "langchain-openai",
+    "langchain-community",
+    "langchain-chroma",
+    "chromadb",
+    "pydantic",
+    "python-multipart",
+    "python-dotenv",
+    "tiktoken",
+    "bs4"
+]
+
+[tool.ruff]
+line-length = 88
+target-version = "py312"
