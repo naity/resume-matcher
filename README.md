@@ -2,6 +2,9 @@
 
 An AI-powered Career Coach that matches your resume (PDF) with real job postings using autonomous agents.
 
+## Architecture
+![Agentic RAG Architecture](agentic_rag.drawio.png)
+
 ## Features
 - **Agentic Search**: Autonomously formulates queries and searches a vector DB of real jobs.
 - **Multimodal**: Accepts PDF resumes directly.
