@@ -32,33 +32,33 @@ def get_agent():
     )
     return agent
 
-if __name__ == "__main__":
-    async def main():
-        print("🤖 Initializing Agent...")
-        agent = get_agent()
-        
-        resume_text = """
-        John Doe
-        Senior Software Engineer
-        Skills: Python, AWS, Docker, Kubernetes, FastAPI, React
-        Experience: 5 years building cloud-native applications.
-        """
-        
-        print("🚀 Running Agent with sample resume...")
-        # The agent expects a "messages" key with the conversation history
-        # We start with the user's resume
-        result = await agent.ainvoke({
-            "messages": [{"role": "user", "content": f"Here is my resume:\n{resume_text}"}]
-        })
-        
-        # The result will contain 'structured_response' because we used ProviderStrategy
-        structured_data: MatchResponse = result["structured_response"]
-        
-        print(f"\n✅ Found {len(structured_data.matches)} matches:\n")
-        for match in structured_data.matches:
-            print(f"🔹 {match.job_title} (Score: {match.match_score})")
-            print(f"   Reasoning: {match.reasoning}")
-            print(f"   Strengths: {match.strengths}")
-            print("-" * 40)
+async def test_agent():
+    """Run a quick test of the agent with a dummy resume."""
+    print("🤖 Initializing Agent...")
+    agent = get_agent()
+    
+    resume_text = """
+    John Doe
+    Senior Software Engineer
+    Skills: Python, AWS, Docker, Kubernetes, FastAPI, React
+    Experience: 5 years building cloud-native applications.
+    """
+    
+    print("🚀 Running Agent with sample resume...")
+    result = await agent.ainvoke({
+        "messages": [{"role": "user", "content": f"Here is my resume:\n{resume_text}"}]
+    })
+    
+    structured_data: MatchResponse = result["structured_response"]
+    
+    print(f"\n✅ Found {len(structured_data.matches)} matches:\n")
+    for match in structured_data.matches:
+        print(f"🔹 {match.job_title} (Score: {match.match_score})")
+        print(f"   Reasoning: {match.reasoning}")
+        print(f"   Strengths: {match.strengths}")
+        print("-" * 40)
 
-    asyncio.run(main())
+if __name__ == "__main__":
+    asyncio.run(test_agent())
+
+
