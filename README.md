@@ -11,6 +11,20 @@ An AI-powered Career Coach that matches your resume (PDF) with real job postings
 - **Structured Analysis**: Returns a score, reasoning, strengths, and missing skills.
 - **Real Data**: Ingests job descriptions from Google Careers.
 
+## Project Structure
+```
+.
+├── src/
+│   ├── agent.py       # Core agent logic & system prompt
+│   ├── tools.py       # RAG tools (search_jobs) & ChromaDB interaction
+│   ├── models.py      # Pydantic models for structured output
+│   └── ingestion.py   # Script to scrape/ingest job data
+├── main.py            # FastAPI backend & streaming endpoint
+├── streamlit_app.py   # Streamlit frontend
+├── requirements.txt   # Python dependencies
+└── README.md          # Project documentation
+```
+
 ## Quick Start
 
 ### 1. Setup
@@ -39,6 +53,7 @@ python main.py
 streamlit run streamlit_app.py
 ```
 Open [http://localhost:8501](http://localhost:8501) to start matching!
+
 
 ## Tech Stack
 - **AI**: LangChain, GPT, OpenAI Embeddings
